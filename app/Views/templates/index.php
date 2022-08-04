@@ -66,7 +66,15 @@
     <!-- CoreUI and necessary plugins-->
     <script src="<?= base_url(); ?>/assets/vendors/@coreui/coreui/js/coreui.bundle.min.js"></script>
     <script src="<?= base_url(); ?>/assets/vendors/simplebar/js/simplebar.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
     <script>
+        $(document).ready(function() {
+            $('#daftar').DataTable();
+        });
     </script>
 
 </body>
