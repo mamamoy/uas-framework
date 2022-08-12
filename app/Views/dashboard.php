@@ -7,11 +7,11 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card mb-4">
-                    <div class="card-header">Riwayat Transaksi Pelanggan</div>
+                    <div class="card-header fw-bold">Riwayat Transaksi Pelanggan</div>
                     <div class="card-body">
                         <p>Data dibawah menunjukkan riwayat transaksi yang telah dilakukan oleh pelanggan.</p>
                         <div class="table-responsive">
-                            <table class="table border mb-0">
+                            <table class="table table-hover" id="daftar">
                                 <thead class="table-light fw-semibold">
                                     <tr class="align-middle">
                                         <th class="text-center">No</th>

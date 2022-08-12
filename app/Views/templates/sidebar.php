@@ -9,10 +9,11 @@
     </div>
     <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="">
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="/">
                 <svg class="nav-icon">
                     <use xlink:href="<?= base_url(); ?>/assets/vendors/@coreui/icons/svg/free.svg#cil-home"></use>
-                </svg> Dashboard<span class="badge badge-sm bg-info ms-auto">NEW</span>
+                </svg> Dashboard
+                <!-- <span class="badge badge-sm bg-info ms-auto">NEW</span> -->
             </a>
         </li>
         <li class="nav-title">Halaman</li>
@@ -24,14 +25,16 @@
             </a>
         </li>
         <li class="nav-title">Layanan</li>
-        <li class="nav-item"><a class="nav-link" href="colors.html">
-                <svg class="nav-icon">
-                    <use xlink:href="<?= base_url(); ?>/assets/vendors/@coreui/icons/svg/free.svg#cil-healing"></use>
-                </svg> Servis</a></li>
-        <li class="nav-item"><a class="nav-link" href="typography.html">
+        <li class="nav-item"><a class="nav-link text-wrap" href="/servis">
                 <svg class="nav-icon">
                     <use xlink:href="<?= base_url(); ?>/assets/vendors/@coreui/icons/svg/free.svg#cil-cart"></use>
-                </svg> Suku Cadang</a></li>
+                </svg> Servis &amp; Pembelian Suku Cadang</a>
+        </li>
+        <li class="nav-item"><a class="nav-link text-wrap" href="/stockBarang">
+                <svg class="nav-icon">
+                    <use xlink:href="<?= base_url(); ?>/assets/vendors/@coreui/icons/svg/free.svg#cil-cart"></use>
+                </svg> Stock Barang</a>
+        </li>
     </ul>
     <button class="sidebar-toggler" type="button" data-coreui-toggle="unfoldable"></button>
 </div>
