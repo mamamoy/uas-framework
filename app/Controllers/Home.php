@@ -20,4 +20,12 @@ class Home extends BaseController
     {
         return view('servis');
     }
+    public function invoice()
+    {
+        return view('invoice');
+    }
+    public function terima()
+    {
+        return view('terimapesanan');
+    }
 }

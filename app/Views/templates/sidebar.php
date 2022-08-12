@@ -9,7 +9,7 @@
     </div>
     <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="">
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="/">
                 <svg class="nav-icon">
                     <use xlink:href="<?= base_url(); ?>/assets/vendors/@coreui/icons/svg/free.svg#cil-home"></use>
                 </svg> Dashboard
@@ -25,7 +25,7 @@
             </a>
         </li>
         <li class="nav-title">Layanan</li>
-        <li class="nav-item"><a class="nav-link text-wrap" href="colors.html">
+        <li class="nav-item"><a class="nav-link text-wrap" href="/servis">
                 <svg class="nav-icon">
                     <use xlink:href="<?= base_url(); ?>/assets/vendors/@coreui/icons/svg/free.svg#cil-cart"></use>
                 </svg> Servis &amp; Pembelian Suku Cadang</a>
