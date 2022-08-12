@@ -45,6 +45,8 @@
     <link href="<?= base_url(); ?>/assets/css/examples.css" rel="stylesheet">
     <!-- Global site tag (gtag.js) - Google Analytics-->
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script>
+    <script src="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css"></script>
+
     <script>
         window.dataLayer = window.dataLayer || [];
 
