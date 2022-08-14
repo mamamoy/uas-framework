@@ -12,55 +12,49 @@
                         <p>Silahkan isi data berikut ini.</p>
                         <div class="tab-content rounded-bottom">
                             <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-668">
-                                <form>
+                                <?php $validation = \Config\Services::validation(); ?>
+
+                                <form action="BuatTransaksi" method="post" enctype="multipart/form-data">
+                                    <?= csrf_field(); ?>
                                     <div class="row mb-3">
-                                        <label class="col-sm-2 col-form-label" for="inputEmail3">Nama Pelanggan</label>
+                                        <label class="col-sm-2 col-form-label" for="nama_pelanggan">Nama Pelanggan</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" id="inputEmail3" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3" hidden>
-                                        <label class="col-sm-2 col-form-label" for="inputEmail3">Jam</label>
-                                        <div class="col-sm-10">
-                                            <input class="form-control" id="inputEmail3" type="time">
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3" hidden>
-                                        <label class="col-sm-2 col-form-label" for="inputEmail3">Tanggal</label>
-                                        <div class="col-sm-10">
-                                            <input class="form-control" id="inputEmail3" type="date">
+                                            <input class="form-control <?= ($validation->hasError('nama_pelanggan')) ? 'is-invalid' : ''; ?>" name="nama_pelanggan" id="nama_pelanggan" placeholder="Nama Anda" value="<?= old('nama_pelanggan'); ?>" type="text">
+                                            <div class="invalid-feedback">
+                                                <?= $validation->getError('nama_pelanggan'); ?>
+                                            </div>
                                         </div>
                                     </div>
                                     <fieldset class="row mb-3">
                                         <legend class="col-form-label col-sm-2 pt-0">Jenis Kendaraan</legend>
                                         <div class="col-sm-10">
                                             <div class="form-check">
-                                                <input class="form-check-input" id="gridRadios1" type="radio" name="gridRadios" value="option1" checked="">
-                                                <label class="form-check-label" for="gridRadios1">Roda 2</label>
+                                                <input class="form-check-input" id="jenis_kendaraan" type="radio" name="jenis_kendaraan" value="1">
+                                                <label class="form-check-label" for="jenis_kendaraan">Roda 2</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" id="gridRadios2" type="radio" name="gridRadios" value="option2">
-                                                <label class="form-check-label" for="gridRadios2">Roda 4</label>
+                                                <input class="form-check-input" id="jenis_kendaraan" type="radio" name="jenis_kendaraan" value="2">
+                                                <label class="form-check-label" for="jenis_kendaraan">Roda 4</label>
                                             </div>
                                         </div>
                                     </fieldset>
                                     <div class="row mb-3">
-                                        <label class="col-sm-2 col-form-label" for="inputPassword3">Model</label>
+                                        <label class="col-sm-2 col-form-label" for="merk_kendaraan">Model</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" id="inputPassword3" type="text">
+                                            <input class="form-control <?= ($validation->hasError('merk_kendaraan')) ? 'is-invalid' : ''; ?>" name="merk_kendaraan" id="merk_kendaraan" type="text">
                                             <p class="fw-lighter text-end"><i>Contoh: Honda Supra 125</i></p>
                                         </div>
                                     </div>
                                     <fieldset class="row mb-3">
                                         <legend class="col-form-label col-sm-2 pt-0">Jenis Pelayanan</legend>
                                         <div class="col-sm-10">
-                                            <div class="form-check form-switch">
-                                                <input class="form-check-input" id="flexSwitchCheckDefault" type="checkbox">
-                                                <label class="form-check-label" for="flexSwitchCheckDefault">Servis</label>
+                                            <div class="form-check">
+                                                <input class="form-check-input" id="jenis_pelayanan" type="radio" name="jenis_pelayanan" value="1">
+                                                <label class="form-check-label" for="jenis_pelayanan">Servis</label>
                                             </div>
-                                            <div class="form-check form-switch">
-                                                <input class="form-check-input" id="flexSwitchCheckDefault" type="checkbox">
-                                                <label class="form-check-label" for="flexSwitchCheckDefault">Pembelian Suku Cadang</label>
+                                            <div class="form-check">
+                                                <input class="form-check-input" id="jenis_pelayanan" type="radio" name="jenis_pelayanan" value="2">
+                                                <label class="form-check-label" for="jenis_pelayanan">Servis &amp; Pembelian Suku Cadang</label>
                                             </div>
                                         </div>
                                     </fieldset>

@@ -25,7 +25,7 @@ class StockController extends BaseController
         $data['stocks'] = $stock->findAll();
 
         // kirim data ke view
-        return view('stockBarang/index',$data);
+        return view('stockBarang/index', $data);
     }
 
 
@@ -34,12 +34,13 @@ class StockController extends BaseController
         // buat object model $news
         $stock = new StockModel();
         // lakukan validasi
-     
+
         // kirim data ke view
         return view('stockBarang/create');
     }
 
-    public function store(){
+    public function store()
+    {
 
         $this->stock->insert([
             'kode_barang' => $this->request->getPost('kode_barang'),
@@ -48,7 +49,7 @@ class StockController extends BaseController
             'stok_barang' => $this->request->getPost('jumlah_barang'),
         ]);
 
-        return redirect('stockBarang')->with('success', 'Data Added Successfully');	
+        return redirect('stockBarang')->with('success', 'Data Added Successfully');
     }
 
     public function edit($id)
@@ -68,19 +69,19 @@ class StockController extends BaseController
 
     //------------------------------------------------------------
 
-    public function viewNews($slug)
-    {
-        $news = new NewsModel();
-        $data['news'] = $news->where([
-            'slug' => $slug,
-            'status' => 'published'
-        ])->first();
+    // public function viewNews($slug)
+    // {
+    //     $news = new NewsModel();
+    //     $data['news'] = $news->where([
+    //         'slug' => $slug,
+    //         'status' => 'published'
+    //     ])->first();
 
-        // tampilkan 404 error jika data tidak ditemukan
-        if (!$data['news']) {
-            throw PageNotFoundException::forPageNotFound();
-        }
+    //     // tampilkan 404 error jika data tidak ditemukan
+    //     if (!$data['news']) {
+    //         throw PageNotFoundException::forPageNotFound();
+    //     }
 
-        echo view('news_detail', $data);
-    }
+    //     echo view('news_detail', $data);
+    // }
 }
