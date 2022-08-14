@@ -17,7 +17,7 @@
 
             <div class="col-xl-8">
                 <div class="card">
-                    <div class="card-header">Profile</div>
+                    <div class="card-header">Edit Profile</div>
                     <div class="card-body pt-3">
                         <div class="tab-content rounded-bottom">
                             <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-1077">
@@ -26,7 +26,7 @@
                                         <button class="nav-link active" id="profile-overview-tab" data-coreui-toggle="tab" data-coreui-target="#profile-overview" type="button" role="tab" aria-controls="profile-overview" aria-selected="true">Profile Overview</button>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <button class="nav-link" id="profile-tab" data-coreui-toggle="tab" data-coreui-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
+                                        <button class="nav-link" id="profile-tab" data-coreui-toggle="tab" data-coreui-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Edit Profile</button>
                                     </li>
                                 </ul>
                                 <div class="tab-content" id="myTabContent">

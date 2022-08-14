@@ -40,6 +40,7 @@ $routes->get('/admin', 'Home::admin');
 $routes->get('/register', 'Home::register');
 $routes->get('/login', 'Home::login');
 $routes->get('/servis', 'Home::servis');
+$routes->get('/profile', 'Home::profile');
 
 $routes->get('stockBarang', 'StockController::index');
 $routes->get('stockBarangCreate', 'StockController::create');
