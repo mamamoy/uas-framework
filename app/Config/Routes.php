@@ -39,10 +39,12 @@ $routes->get('/', 'Home::index');
 $routes->get('/register', 'Home::register');
 $routes->get('/login', 'Home::login');
 $routes->get('/servis', 'Home::servis');
+
 $routes->get('stockBarang', 'StockController::index');
 $routes->get('stockBarangCreate', 'StockController::create');
 $routes->add('stockBarangPost', 'StockController::store');
-$routes->add('stockBarangEdit/(:segment)', 'StockController::edit/$1');
+$routes->match(["get", "post"],'stockBarangEdit/(:num)', 'StockController::edit/$1');
+$routes->match([ "post"], 'stockBarangUpdate/(:num)', 'StockController::update/$1');
 
 
 $routes->get('/invoice', 'Home::invoice');

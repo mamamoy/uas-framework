@@ -73,6 +73,7 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
     <?= $this->renderSection('footerScript'); ?>
 
+
     <script>
         $(document).ready(function() {
             $('#daftar').DataTable();

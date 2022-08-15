@@ -11,7 +11,7 @@
                     <div class="card-body">
                         <div class="tab-content rounded-bottom">
                             <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-668">
-                                <form action="<?= base_url('stockBarangPost') ?>" method="post">
+                                <form action="<?= base_url('stockBarangUpdate/' . $stock['id']) ?>" method="post">
                                     <?= csrf_field(); ?>
                                     <div class="row mb-3">
                                         <label class="col-sm-2 col-form-label" for="inputEmail3">Kode barang</label>
@@ -38,7 +38,7 @@
                                         </div>
                                     </div>
 
-                                    <button class="btn btn-primary" type="submit">Tambah Barang</button>
+                                    <button class="btn btn-primary" type="submit">Update Barang</button>
                                 </form>
                             </div>
                         </div>

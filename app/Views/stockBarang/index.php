@@ -4,6 +4,16 @@
 
 <div class="body flex-grow-1 px-3">
     <div class="container-lg">
+        <?php
+        if (session()->getFlashData('success')) {
+        ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <?= session()->getFlashData('success') ?>
+                
+            </div>
+        <?php
+        }
+        ?>
         <div class="row">
             <div class="col-md-12">
                 <div class="card shadow mb-4">
@@ -34,7 +44,7 @@
                                             <td><?= $stock['harga'] ?></td>
                                             <td><?= $stock['stok_barang'] ?></td>
                                             <td>
-                                                <a type="button" class="btn btn-warning text-white" href="<?= base_url('stockBarangEdit/'.$stock['id']) ?>">
+                                                <a type="button" class="btn btn-warning text-white" href="<?= base_url('stockBarangEdit/' . $stock['id']) ?>">
                                                     Edit
                                                 </a>
                                             </td>
