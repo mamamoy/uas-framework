@@ -7,8 +7,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <a type="button" class="btn btn-primary" href="<?= base_url('stockBarangCreate') ?>">
+                    <div class="card-header fw-bold">
+                        Stock Barang
+                        <a type="button" class="btn btn-primary float-end" href="<?= base_url('stockBarangCreate') ?>">
                             Add Barang
                         </a>
                     </div>
@@ -34,7 +35,7 @@
                                             <td><?= $stock['harga'] ?></td>
                                             <td><?= $stock['stok_barang'] ?></td>
                                             <td>
-                                                <a type="button" class="btn btn-warning text-white" href="<?= base_url('stockBarangEdit/'.$stock['id']) ?>">
+                                                <a type="button" class="btn btn-warning text-white" href="<?= base_url('stockBarangEdit/' . $stock['id']) ?>">
                                                     Edit
                                                 </a>
                                             </td>

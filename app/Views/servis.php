@@ -16,18 +16,27 @@
 
                                 <form action="BuatTransaksi" method="post" enctype="multipart/form-data">
                                     <?= csrf_field(); ?>
+                                    <div class="row mb-3" hidden>
+                                        <label class="col-sm-2 col-form-label" for="status">Status</label>
+                                        <div class="col-sm-10">
+                                            <input class="form-control" name="status" id="status" placeholder="Nama Anda" value="1" type="number">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3" hidden>
+                                        <label class="col-sm-2 col-form-label" for="email">Email</label>
+                                        <div class="col-sm-10">
+                                            <input class="form-control" name="email" id="email" placeholder="Nama Anda" value="<?= session()->get('email') ?>" type="email">
+                                        </div>
+                                    </div>
                                     <div class="row mb-3">
                                         <label class="col-sm-2 col-form-label" for="nama_pelanggan">Nama Pelanggan</label>
                                         <div class="col-sm-10">
                                             <input class="form-control <?= ($validation->hasError('nama_pelanggan')) ? 'is-invalid' : ''; ?>" name="nama_pelanggan" id="nama_pelanggan" placeholder="Nama Anda" value="<?= old('nama_pelanggan'); ?>" type="text">
-                                            <div class="invalid-feedback">
-                                                <?= $validation->getError('nama_pelanggan'); ?>
-                                            </div>
                                         </div>
                                     </div>
                                     <fieldset class="row mb-3">
                                         <legend class="col-form-label col-sm-2 pt-0">Jenis Kendaraan</legend>
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-10 <?= ($validation->hasError('jenis_kendaraan')) ? 'is-invalid' : ''; ?>">
                                             <div class="form-check">
                                                 <input class="form-check-input" id="jenis_kendaraan" type="radio" name="jenis_kendaraan" value="1">
                                                 <label class="form-check-label" for="jenis_kendaraan">Roda 2</label>
@@ -36,13 +45,19 @@
                                                 <input class="form-check-input" id="jenis_kendaraan" type="radio" name="jenis_kendaraan" value="2">
                                                 <label class="form-check-label" for="jenis_kendaraan">Roda 4</label>
                                             </div>
+                                            <div class="invalid-feedback">
+                                                <?= $validation->getError('jenis_kendaraan'); ?>
+                                            </div>
                                         </div>
                                     </fieldset>
                                     <div class="row mb-3">
                                         <label class="col-sm-2 col-form-label" for="merk_kendaraan">Model</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control <?= ($validation->hasError('merk_kendaraan')) ? 'is-invalid' : ''; ?>" name="merk_kendaraan" id="merk_kendaraan" type="text">
+                                            <input class="form-control <?= ($validation->hasError('merk_kendaraan')) ? 'is-invalid' : ''; ?>" name="merk_kendaraan" id="merk_kendaraan" type="text" value="<?= old('nama_pelanggan'); ?>">
                                             <p class="fw-lighter text-end"><i>Contoh: Honda Supra 125</i></p>
+                                            <div class="invalid-feedback">
+                                                <?= $validation->getError('patient_name'); ?>
+                                            </div>
                                         </div>
                                     </div>
                                     <fieldset class="row mb-3">

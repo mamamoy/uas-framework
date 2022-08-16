@@ -4,12 +4,31 @@ namespace App\Controllers;
 
 use App\Models\TransaksiModel;
 
-class Transaksi extends BaseController
+class Pelanggan extends BaseController
 {
     public function __construct()
     {
         $this->transaksi = new TransaksiModel();
     }
+    public function index($email)
+    {
+        $email = session()->get('email');
+        $data = [
+            'pesanan' => $this->transaksi->getOrderEmail($email)->findAll()
+        ];
+        // dd($data);
+        return view('dashboard', $data);
+    }
+
+    public function servis()
+    {
+        // $data = [
+        //     'user' => $this->user->getUser(),
+        // ];
+        // dd($data);
+        return view('servis');
+    }
+
     public function BuatTransaksi()
     {
         if ($this->request->getMethod() == 'post') {
@@ -18,12 +37,16 @@ class Transaksi extends BaseController
             if (!$this->validate([
                 'nama_pelanggan' => 'required',
                 'merk_kendaraan' => 'required',
+                'jenis_kendaraan' => 'required',
+                'jenis_pelayanan' => 'required',
             ])) {
 
                 return redirect()->to('servis')->withInput();
             }
 
             $this->transaksi->save([
+                'email' => $this->request->getVar('email'),
+                'status' => $this->request->getVar('status'),
                 'nama_pelanggan' => $this->request->getVar('nama_pelanggan'),
                 'jenis_kendaraan' => $this->request->getVar('jenis_kendaraan'),
                 'merk_kendaraan' => $this->request->getVar('merk_kendaraan'),
@@ -31,10 +54,8 @@ class Transaksi extends BaseController
             ]);
 
             session()->setFlashdata('message', 'Data added successfully.');
-            if ($this->request->getVar('jenis_pelayanan') == 1) {
-                return redirect()->to('/invoice');
-            }
-            return redirect()->to('/');
+
+            return redirect()->to('/dashboard');
         }
         $data = [
             'validation' => \Config\Services::validation()

@@ -28,8 +28,21 @@
                                                             $value = "Servis & pembelian suku cadang";
                                                             echo $value;
                                                         }  ?><br>
-                                    Status : Servis<br>
+                                    Status : <?php if ($data['status'] == 1) {
+                                                    $value = 'Menunggu';
+                                                    echo $value;
+                                                } else {
+                                                    $value = "Selesai";
+                                                    echo $value;
+                                                }  ?><br>
                                 <form>
+                                    <div class="row mb-3">
+                                        <label class="col-sm-2 col-form-label" for="status" hidden>Status</label>
+                                        <div class="col-sm-10">
+                                            <input class="form-control" name="status" id="status" type="number" value="2">
+                                        </div>
+                                    </div>
+
                                     <div class=" row mb-3">
                                         <label class="col-sm-2 col-form-label" for="nama_montir">Montir</label>
                                         <div class="col-sm-10">
@@ -57,7 +70,7 @@
                                         </div>
                                     </div>
                                     <div class="row mb-3">
-                                        <label class="col-sm-2 col-form-label" for="inputPassword3">Quantity</label>
+                                        <label class="col-sm-2 col-form-label" for="jumlah">Quantity</label>
                                         <div class="col-sm-10">
                                             <input class="form-control" name="jumlah" id="jumlah" type="number">
                                         </div>

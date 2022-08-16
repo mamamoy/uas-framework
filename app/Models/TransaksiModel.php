@@ -11,7 +11,7 @@ class TransaksiModel extends Model
 
     protected $useTimestamps = true;
     protected $useAutoIncrement = true;
-    protected $allowedFields = ['nama_pelanggan', 'jenis_kendaraan', 'merk_kendaraan', 'jenis_pelayanan', 'created at', 'updated_at'];
+    protected $allowedFields = ['status', 'keterangan', 'nama_pelanggan', 'email', 'jenis_kendaraan', 'merk_kendaraan', 'jenis_pelayanan', 'created at', 'updated_at'];
 
     public function getOrder($id = false)
     {
@@ -20,5 +20,13 @@ class TransaksiModel extends Model
         }
 
         return $this->where(['id' => $id])->first();
+    }
+    public function getOrderEmail($email = false)
+    {
+        if ($email == false) {
+            return $this->findAll();
+        }
+
+        return $this->where(['email' => $email]);
     }
 }

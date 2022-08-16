@@ -17,54 +17,36 @@
                                 <p class="h3">SI BENGKEL</p>
                             </div>
                             <div class="col-6 text-end">
-                                <p class="h3">Yiorgos Avraamu</p>
+                                <p class="h3"><?= $pesanan['nama_pelanggan']; ?></p>
                             </div>
 
                             <div class="col-12 my-5">
                                 <h1>Struk Pembayaran</h1>
-                                <p>Tanggal : 2019-02-12</p>
+                                <p>Tanggal : <?= $pesanan['created_at']; ?></p>
                             </div>
 
                             <table class="table table-transparent table-responsive">
                                 <thead>
                                     <tr>
                                         <th class="text-center" style="width: 1%"></th>
-                                        <th>Nama Barang</th>
-                                        <th class="text-center" style="width: 1%">Quantity</th>
+                                        <th>Jenis Layanan</th>
+                                        <th class="text-end" style="width: 20%">Keterangan</th>
                                         <th class="text-end" style="width: 20%">Harga</th>
-                                        <th class="text-end" style="width: 20%">Total</th>
                                     </tr>
                                 </thead>
                                 <tr>
                                     <td class="text-center">1</td>
-                                    <td>Oli Mesin</td>
-                                    <td class="text-center">
-                                        1
-                                    </td>
-                                    <td class="text-end">Rp. 60.000</td>
-                                    <td class="text-end">Rp. 60.000</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">2</td>
-                                    <td>Servis</td>
-                                    <td class="text-center">
-                                        1
-                                    </td>
-                                    <td class="text-end">Rp. 50.000</td>
+                                    <td><?php if ($pesanan['jenis_pelayanan'] == 1) {
+                                            echo 'Servis';
+                                        } else {
+                                            echo 'Servis dan pembelian suku cadang';
+                                        } ?></td>
+                                    <td class="text-end"><?= $pesanan['keterangan']; ?></td>
                                     <td class="text-end">Rp. 50.000</td>
                                 </tr>
                                 <tr>
-                                    <td class="text-center">3</td>
-                                    <td>Oli Gardan</td>
-                                    <td class="text-center">
-                                        1
-                                    </td>
-                                    <td class="text-end">Rp. 15.000</td>
-                                    <td class="text-end">Rp. 15.000</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="4" class="strong text-end">Subtotal</td>
-                                    <td class="text-end">Rp. 125.000</td>
+                                    <td colspan="3" class="fw-bold text-end">Subtotal</td>
+                                    <td class="text-end">Rp. 50.000</td>
                                 </tr>
                             </table>
 

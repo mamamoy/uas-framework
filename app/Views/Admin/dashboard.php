@@ -18,23 +18,48 @@
                                         <th>Tanggal</th>
                                         <th>Nama Pelanggan</th>
                                         <th>Jenis Kendaraan</th>
-                                        <th>Merk Kendaraan</th>
                                         <th>Jenis Pelayanan</th>
+                                        <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($pesanan as $key => $p) : ?>
+                                    <?php
+
+                                    use phpDocumentor\Reflection\PseudoTypes\False_;
+
+                                    foreach ($pesanan as $key => $p) : ?>
                                         <tr>
                                             <td><?= ++$key ?></td>
                                             <td><?= $p['created_at'] ?></td>
                                             <td><?= $p['nama_pelanggan'] ?></td>
-                                            <td><?= $p['jenis_kendaraan'] ?></td>
-                                            <td><?= $p['merk_kendaraan'] ?></td>
-                                            <td><?= $p['jenis_pelayanan'] ?></td>
-                                            <td>
-                                                <a type="button" class="btn btn-default" href="<?= base_url('/terima/' . $p['id']) ?>">
-                                                    Edit
-                                                </a>
+                                            <td><?php if ($p['jenis_kendaraan'] == 1) {
+                                                    echo 'Roda 2';
+                                                } else {
+                                                    echo 'Roda 4';
+                                                } ?></td>
+                                            <td><?php if ($p['jenis_pelayanan'] == 1) {
+                                                    echo 'Servis';
+                                                } else {
+                                                    echo 'Servis & pembelian suku cadang';
+                                                } ?></td>
+                                            <td><?php if ($p['status'] == 1) {
+                                                    echo 'Menunggu';
+                                                } else {
+                                                    echo 'Selesai';
+                                                } ?></td>
+                                            <td class="text-end">
+                                                <?php if ($p['status'] == 1) : ?>
+                                                    <a type="button" class="btn btn-outline-primary" href="<?= base_url('/admin/detail/' . $p['id']) ?>">
+                                                        Detail
+                                                    </a>
+                                                <?php else : ?>
+                                                    <a type="button" class="btn btn-outline-primary" href="<?= base_url('/admin/detail/' . $p['id']) ?>">
+                                                        Detail
+                                                    </a>
+                                                    <a type="button" class="btn btn-outline-primary" href="<?= base_url('/admin/invoice/' . $p['id']) ?>">
+                                                        Invoice
+                                                    </a>
+                                                <?php endif; ?>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
