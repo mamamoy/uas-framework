@@ -38,8 +38,8 @@
                                                     echo 'Selesai';
                                                 } ?></td>
                                             <td class="text-end">
-                                                <a type="button" class="btn btn-outline-primary" href="">
-                                                    Info
+                                                <a type="button" class="btn btn-outline-primary" href="<?= base_url('/detail/' . $p['id']) ?>">
+                                                    Detail
                                                 </a>
                                             </td>
                                         </tr>

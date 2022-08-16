@@ -98,6 +98,7 @@ $routes->group('', ['filter' => 'auth:Role,2'], function ($routes) {
     $routes->get('/dashboard', 'Pelanggan::index/$1'); // CUSTOMER DASHBOARD
     $routes->match(['get', 'post'], '/profile', 'Auth::profile');
     $routes->get('/servis', 'Pelanggan::servis');
+    $routes->get('/detail/(:segment)', 'Pelanggan::detail/$1');
     $routes->match(['get', 'post'], 'BuatTransaksi', 'Pelanggan::BuatTransaksi');
 });
 

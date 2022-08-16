@@ -63,4 +63,14 @@ class Pelanggan extends BaseController
 
         return view('servis', $data);
     }
+
+
+    public function detail($id)
+    {
+        $data = [
+            'pesanan' => $this->transaksi->getOrder($id)
+        ];
+        // dd($data);
+        return view('detail', $data);
+    }
 }
