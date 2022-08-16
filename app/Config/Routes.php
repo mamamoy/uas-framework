@@ -36,19 +36,24 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+$routes->get('/admin', 'Home::admin');
 $routes->get('/register', 'Home::register');
 $routes->get('/login', 'Home::login');
 $routes->get('/servis', 'Home::servis');
 
+$routes->get('/profile', 'Home::profile');
+
 $routes->get('stockBarang', 'StockController::index');
 $routes->get('stockBarangCreate', 'StockController::create');
 $routes->add('stockBarangPost', 'StockController::store');
-$routes->match(["get", "post"],'stockBarangEdit/(:num)', 'StockController::edit/$1');
-$routes->match([ "post"], 'stockBarangUpdate/(:num)', 'StockController::update/$1');
+$routes->match(["get"],'stockBarangEdit/(:num)', 'StockController::edit/$1');
+$routes->match(["post"], 'stockBarangUpdate/(:num)', 'StockController::update/$1');
+$routes->get('stockBarangDelete/(:segment)/delete', 'StockController::delete/$1');
 
 
-$routes->get('/invoice', 'Home::invoice');
-$routes->get('/terima', 'Home::terima');
+$routes->get('/invoice/(:segment)', 'Home::invoice/$1');
+$routes->get('/terima/(:segment)', 'Home::terima/$1');
+$routes->match(['get', 'post'], 'BuatTransaksi', 'Transaksi::BuatTransaksi');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

@@ -30,9 +30,10 @@
                     <use xlink:href="<?= base_url(); ?>/assets/vendors/@coreui/icons/svg/free.svg#cil-cart"></use>
                 </svg> Servis &amp; Pembelian Suku Cadang</a>
         </li>
+
         <li class="nav-item"><a class="nav-link text-wrap" href="/stockBarang">
                 <svg class="nav-icon">
-                    <use xlink:href="<?= base_url(); ?>/assets/vendors/@coreui/icons/svg/free.svg#cil-cart"></use>
+                    <use xlink:href="<?= base_url(); ?>/assets/vendors/@coreui/icons/svg/free.svg#cil-storage"></use>
                 </svg> Stock Barang</a>
         </li>
 

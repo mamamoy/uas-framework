@@ -9,7 +9,7 @@
         ?>
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <?= session()->getFlashData('success') ?>
-                
+
             </div>
         <?php
         }
@@ -46,6 +46,9 @@
                                             <td>
                                                 <a type="button" class="btn btn-warning text-white" href="<?= base_url('stockBarangEdit/' . $stock['id']) ?>">
                                                     Edit
+                                                </a>
+                                                <a type="button" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger text-white" href="<?= base_url('stockBarangDelete/' . $stock['id'] . '/delete') ?>">
+                                                    Delete
                                                 </a>
                                             </td>
                                         </tr>
