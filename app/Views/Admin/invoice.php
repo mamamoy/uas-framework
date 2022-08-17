@@ -9,7 +9,7 @@
                 <div class="card mb-4">
                     <div class="card-header fw-bold">
                         Pendaftaran Servis &amp; Pembelian Suku Cadang
-                        <a type="button" id="print" class="btn btn-primary float-end" target="_BLANK" href="<?= base_url('/invoice/Print/' . $pesanan['id']) ?>">Print</a>
+                        <a type="button" id="print" class="btn btn-primary float-end" target="_BLANK" href="<?= base_url('/admin/invoice/Print/' . $pesanan['id']) ?>">Print</a>
                     </div>
                     <div class="card-body">
                         <div class="row">

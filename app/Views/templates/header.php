@@ -38,20 +38,28 @@
                             Settings
                         </div>
                     </div>
-                    <a class="dropdown-item" href="#">
-                        <svg class="icon me-2">
-                            <use xlink:href="<?= base_url(); ?>/assets/vendors/@coreui/icons/svg/free.svg#cil-user"></use>
-                        </svg> Profile
-                    </a>
-                    <a class="dropdown-item" href="#">
-                        <div class="dropdown-divider">
+                    <?php if (session()->get('role') == 1) : ?>
 
-                        </div>
                         <a class="dropdown-item" href="#">
                             <svg class="icon me-2">
-                                <use xlink:href="<?= base_url(); ?>/assets/vendors/@coreui/icons/svg/free.svg#cil-account-logout"></use>
-                            </svg> Logout
+                                <use xlink:href="<?= base_url(); ?>/assets/vendors/@coreui/icons/svg/free.svg#cil-user"></use>
+                            </svg> Profile
                         </a>
+                        <a class="dropdown-item" href="#">
+                            <div class="dropdown-divider">
+                            </div>
+                            <a class="dropdown-item" href="/logout">
+                                <svg class="icon me-2">
+                                    <use xlink:href="<?= base_url(); ?>/assets/vendors/@coreui/icons/svg/free.svg#cil-account-logout"></use>
+                                </svg> Logout
+                            </a>
+                        <?php else : ?>
+                            <a class="dropdown-item" href="/logout">
+                                <svg class="icon me-2">
+                                    <use xlink:href="<?= base_url(); ?>/assets/vendors/@coreui/icons/svg/free.svg#cil-account-logout"></use>
+                                </svg> Logout
+                            </a>
+                        <?php endif; ?>
                 </div>
             </li>
         </ul>

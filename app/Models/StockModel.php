@@ -20,4 +20,10 @@ class StockModel extends Model
 
         return $this->where(['nama_barang' => $barang])->first();
     }
+
+    public function getSemuaBarang($barang = false)
+    {
+        return $this->findAll();
+    }
+    
 }

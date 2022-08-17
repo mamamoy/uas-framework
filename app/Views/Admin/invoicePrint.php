@@ -9,7 +9,6 @@
                 <div class="card mb-4">
                     <div class="card-header fw-bold">
                         Pendaftaran Servis &amp; Pembelian Suku Cadang
-                        <a type="button" id="print" class="btn btn-primary float-end" target="_BLANK" href="<?= base_url('/invoice/Print/' . $pesanan['id']) ?>">Print</a>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -23,7 +22,6 @@
                             <div class="col-12 my-5">
                                 <h1>Struk Pembayaran</h1>
                                 <p>Tanggal : <?= $pesanan['created_at']; ?></p>
-                                <p>Keterangan Servis : <?= $pesanan['keterangan']?></p>
                             </div>
 
                             <table class="table table-transparent table-responsive">
@@ -62,6 +60,11 @@
 </div>
 
 <?= $this->endSection(); ?>
+<?= $this->section('footerScript'); ?>
 <script>
-    window.print();
+    $(document).ready(function() {
+                
+                    window.print();
+});
 </script>
+<?= $this->endSection(); ?>

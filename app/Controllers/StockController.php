@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Models\StockModel;
-use CodeIgniter\Exceptions\PageNotFoundException;
 
 class StockController extends BaseController
 {
