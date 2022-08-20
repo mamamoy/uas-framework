@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\Models\AuthModel;
 use App\Models\BarangPesananModel;
-use App\Models\MontirModel;
 use App\Models\StockModel;
 use App\Models\TransaksiModel;
 
@@ -14,7 +13,6 @@ class Admin extends BaseController
     {
         $this->transaksi = new TransaksiModel();
         $this->authModel = new AuthModel();
-        $this->montir = new MontirModel();
         $this->barang = new StockModel();
         $this->barangPesananModel = new BarangPesananModel();
         $this->auth = new AuthModel();
@@ -29,23 +27,25 @@ class Admin extends BaseController
         return view('Admin/dashboard', $data);
     }
 
-    public function userdetail($id){
+    public function userdetail($id)
+    {
         $data = [
             'user' => $this->auth->getUser($id),
         ];
         return view('Admin/detail_user', $data);
     }
 
-    public function userRole($id){
+    public function userRole($id)
+    {
         $data = [
             'user' => $this->auth->getUser($id)
         ];
 
-        $this->auth->update($id,[
+        $this->auth->update($id, [
             'role' => $this->request->getVar('role'),
         ]);
 
-        return view('admin/userRoleMenu', $data);
+        return view('admin/detail_user', $data);
     }
 
     //DETAIL PESANAN
@@ -59,7 +59,8 @@ class Admin extends BaseController
         $data = [
             'barangs_pesanan' => $this->barangPesananModel->getOrder($id)->getResult(),
             'sub_total' => array_sum($totalAmount),
-            'pesanan' => $this->transaksi->getOrder($id)
+            'pesanan' => $this->transaksi->getOrder($id),
+
         ];
         return view('Admin/detail', $data);
     }
@@ -78,11 +79,12 @@ class Admin extends BaseController
             'sub_total' => array_sum($totalAmount),
             'pesanan' => $this->transaksi->getOrder($id)
         ];
-        return view('invoice', $data);
+        return view('admin/invoice', $data);
     }
 
 
-    public function invoicePrint($id){
+    public function invoicePrint($id)
+    {
         $amount = $this->barangPesananModel->getOrder($id)->getResult();
         $totalAmount = array();
         foreach ($amount as $amoun) {
@@ -132,39 +134,6 @@ class Admin extends BaseController
     }
     //---------------------------
 
-    //METHOD DIBAWAH INI BELUM TERPAKAI JEK MUMET
-    public function TerimaPesanan()
-    {
-        if ($this->request->getMethod() == 'post') {
-            // SET UP RULES
-            // validasi input
-            if (!$this->validate([
-                'nama_montir' => 'required',
-            ])) {
-
-                return redirect()->to('terima/$1')->withInput();
-            }
-
-            $this->transaksi->save([
-                'nama_montir' => $this->request->getVar('nama_montir'),
-                'jenis_kendaraan' => $this->request->getVar('jenis_kendaraan'),
-                'merk_kendaraan' => $this->request->getVar('merk_kendaraan'),
-                'jenis_pelayanan' => $this->request->getVar('jenis_pelayanan'),
-                'nama_barang' => $this->request->getVar('nama_barang'),
-                'jumlah' => $this->request->getVar('jumlah'),
-            ]);
-
-            session()->setFlashdata('message', 'Data added successfully.');
-
-            return redirect()->to('/');
-        }
-        $data = [
-            'validation' => \Config\Services::validation()
-        ];
-
-        return view('servis', $data);
-    }
-
     //METHOD TERIMA PESANAN JIKA SERVIS TOK
     public function detailUpdate($id)
     {
@@ -196,10 +165,10 @@ class Admin extends BaseController
     {
         helper(['form', 'url']);
         $data = [];
-        if(!$this->request->getVar('q')){
+        if (!$this->request->getVar('q')) {
             $query = $this->barang->select('id, nama_barang as text')
                 ->limit(10)->get();
-        }else {
+        } else {
 
             $query = $this->barang->like('nama_barang', $this->request->getVar('q'))
                 ->select('id, nama_barang as text')
@@ -213,14 +182,14 @@ class Admin extends BaseController
     public function tambahBarangPesanan($id)
     {
         // dd($this->request->getVar('barangs'));
-        
+
         $data = [
-            'pesanan_id'=>$id,
+            'pesanan_id' => $id,
             'barangs' => $this->barang->getSemuaBarang(),
         ];
 
 
-        return view('Admin/tambahBarangPesanan',$data);
+        return view('Admin/tambahBarangPesanan', $data);
     }
 
     public function storeBarangPesanan()
@@ -234,13 +203,13 @@ class Admin extends BaseController
                 'barang_id' => $barang
             );
             // dd($data);
-            $this->barangPesananModel->insert( $data);
+            $this->barangPesananModel->insert($data);
         }
 
 
 
         // return view('Admin/tambahBarangPesanan', $data);
-        return redirect()->to('/admin/detail/'. $pesanan_id);
+        return redirect()->to('/admin/detail/' . $pesanan_id);
     }
 
     public function delete($id)

@@ -17,14 +17,14 @@
                     <!-- <span class="badge badge-sm bg-info ms-auto">NEW</span> -->
                 </a>
             </li>
-            <li class="nav-title">Halaman</li>
-            <li class="nav-item">
+            <!-- <li class="nav-title">Halaman</li> -->
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="/profile">
                     <svg class="nav-icon">
                         <use xlink:href="<?= base_url(); ?>/assets/vendors/@coreui/icons/svg/free.svg#cil-user"></use>
                     </svg> Profil
                 </a>
-            </li>
+            </li> -->
         <?php else : ?>
             <li class="nav-item">
                 <a class="nav-link" href="/dashboard">

@@ -25,9 +25,6 @@
                                 </thead>
                                 <tbody>
                                     <?php
-
-                                    use phpDocumentor\Reflection\PseudoTypes\False_;
-
                                     foreach ($pesanan as $key => $p) : ?>
                                         <tr>
                                             <td><?= ++$key ?></td>
@@ -53,7 +50,7 @@
                                                     <a type="button" class="btn btn-outline-primary" href="<?= base_url('/admin/detail/' . $p['id']) ?>">
                                                         Detail
                                                     </a>
-                                                    
+
                                                 <?php else : ?>
                                                     <a type="button" class="btn btn-outline-primary" href="<?= base_url('/admin/detail/' . $p['id']) ?>">
                                                         Detail

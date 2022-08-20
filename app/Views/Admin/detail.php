@@ -29,7 +29,7 @@
                                             <form action="detailUpdate/<?= $pesanan['id']; ?>" method="post" enctype="multipart/form-data">
                                                 <?= csrf_field(); ?>
                                                 <div class="mb-3">
-                                                    <label for="keterangan" class="col-form-label">Keterangan servis:</label>
+                                                    <label for="keterangan" class="col-form-label">Nama Montir:</label>
                                                     <textarea type="text" class="form-control" id="keterangan" name="keterangan" value="" rows="3" placeholder="Isi keterangan bagian kendaraan yang diperbaiki!"></textarea>
                                                 </div>
                                                 <div class="row mb-3" hidden>
@@ -112,6 +112,7 @@ Jenis Kendaraan         :   <?php if ($pesanan['jenis_kendaraan'] == 1) {
                                 echo 'Roda 4';
                             } ?><br>
 Merk Kendaraan          :   <?php echo $pesanan['merk_kendaraan'] ?><br>
+Montir                  :   <?php echo $pesanan['keterangan'] ?></br>
 Tanggal Pesanan Dibuat  :   <?php echo $pesanan['created_at'] ?><br>
 Status                  :   <?php if ($pesanan['status'] == 1) {
                                 echo 'Menunggu';

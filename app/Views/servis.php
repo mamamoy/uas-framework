@@ -51,7 +51,7 @@
                                         </div>
                                     </fieldset>
                                     <div class="row mb-3">
-                                        <label class="col-sm-2 col-form-label" for="merk_kendaraan">Model</label>
+                                        <label class="col-sm-2 col-form-label" for="merk_kendaraan">Tipe Kendaraan</label>
                                         <div class="col-sm-10">
                                             <input class="form-control <?= ($validation->hasError('merk_kendaraan')) ? 'is-invalid' : ''; ?>" name="merk_kendaraan" id="merk_kendaraan" type="text" value="<?= old('nama_pelanggan'); ?>">
                                             <p class="fw-lighter text-end"><i>Contoh: Honda Supra 125</i></p>

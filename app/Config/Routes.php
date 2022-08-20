@@ -92,12 +92,12 @@ $routes->group('', ['filter' => 'auth:Role,1'], function ($routes) {
     $routes->get('/admin/user_menu', 'Admin::userRoleMenu'); // ADMIN USER LIST
     $routes->get('/admin/user_menu/(:segment)', 'Admin::userdetail/$1');
     $routes->get('stockBarang', 'StockController::index');
+    $routes->match(["post"], 'stockBarangUpdate/(:num)', 'StockController::update/$1'); //view update
+    $routes->add('stockBarangEdit/(:segment)', 'StockController::edit/$1');
     $routes->get('stockBarangCreate', 'StockController::create');
+    $routes->get('stockBarangDelete/(:segment)/delete', 'StockController::delete/$1');
     $routes->add('stockBarangPost', 'StockController::store');
     $routes->post('/admin/user_menu/userRole/(:segment)', 'Admin::userRole/$1');
-    $routes->add('stockBarangEdit/(:segment)', 'StockController::edit/$1');
-    $routes->match(["post"], 'stockBarangUpdate/(:num)', 'StockController::update/$1');
-    $routes->get('stockBarangDelete/(:segment)/delete', 'StockController::delete/$1');
 
     $routes->get('/terima/(:segment)', 'Admin::terima/$1');
     $routes->get('/admin/detail/(:segment)', 'Admin::detail/$1');
@@ -110,7 +110,6 @@ $routes->group('', ['filter' => 'auth:Role,1'], function ($routes) {
     $routes->get('/admin/invoice/Print/(:segment)', 'Admin::invoicePrint/$1');
 
     $routes->post('/admin/detail/detailUpdate/(:segment)', 'Admin::detailUpdate/$1');
-    $routes->match(['get', 'post'], 'TerimaPesanan', 'Amin::TerimaPesanan');
 });
 
 

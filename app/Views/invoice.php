@@ -23,7 +23,7 @@
                             <div class="col-12 my-5">
                                 <h1>Struk Pembayaran</h1>
                                 <p>Tanggal : <?= $pesanan['created_at']; ?></p>
-                                <p>Keterangan Servis : <?= $pesanan['keterangan']?></p>
+                                <p>Montir : <?= $pesanan['keterangan'] ?></p>
                             </div>
 
                             <table class="table table-transparent table-responsive">

@@ -22,6 +22,7 @@
                             <div class="col-12 my-5">
                                 <h1>Struk Pembayaran</h1>
                                 <p>Tanggal : <?= $pesanan['created_at']; ?></p>
+                                <p>Montir : <?= $pesanan['keterangan']; ?></p>
                             </div>
 
                             <table class="table table-transparent table-responsive">
@@ -63,8 +64,8 @@
 <?= $this->section('footerScript'); ?>
 <script>
     $(document).ready(function() {
-                
-                    window.print();
-});
+
+        window.print();
+    });
 </script>
 <?= $this->endSection(); ?>
