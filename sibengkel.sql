@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 16, 2022 at 04:19 PM
+-- Generation Time: Aug 20, 2022 at 03:58 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.0.17
 
@@ -57,7 +57,33 @@ INSERT INTO `auth_logins` (`id`, `user_id`, `firstname`, `lastname`, `role`, `ip
 (12, 2, 'tes', 'kedua', '2', '::1', '2022-08-16 06:16:04', 1),
 (13, 1, 'aan', 'setiawan', '1', '::1', '2022-08-16 07:08:44', 1),
 (14, 2, 'tes', 'kedua', '2', '::1', '2022-08-16 07:29:00', 1),
-(15, 1, 'aan', 'setiawan', '1', '::1', '2022-08-16 07:37:15', 1);
+(15, 1, 'aan', 'setiawan', '1', '::1', '2022-08-16 07:37:15', 1),
+(16, 2, 'tes', 'kedua', '2', '::1', '2022-08-16 09:47:40', 1),
+(17, 1, 'aan', 'setiawan', '1', '::1', '2022-08-16 09:48:22', 1),
+(18, 2, 'tes', 'kedua', '2', '::1', '2022-08-16 09:58:20', 1),
+(19, 2, 'tes', 'kedua', '2', '::1', '2022-08-19 08:09:33', 1),
+(20, 1, 'aan', 'setiawan', '1', '::1', '2022-08-19 08:10:42', 1),
+(21, 2, 'tes', 'kedua', '2', '::1', '2022-08-19 08:19:40', 1),
+(22, 2, 'tes', 'kedua', '2', '::1', '2022-08-19 08:40:21', 1),
+(23, 1, 'aan', 'setiawan', '1', '::1', '2022-08-19 08:40:42', 1),
+(24, 1, 'aan', 'setiawan', '1', '::1', '2022-08-19 09:02:52', 1),
+(25, 3, 'Pancen', 'Oye', '2', '::1', '2022-08-19 09:05:22', 1),
+(26, 1, 'aan', 'setiawan', '1', '::1', '2022-08-19 09:07:09', 1),
+(27, 2, 'tes', 'kedua', '2', '::1', '2022-08-19 09:20:48', 1),
+(28, 1, 'aan', 'setiawan', '1', '::1', '2022-08-19 09:21:40', 1),
+(29, 2, 'tes', 'kedua', '2', '::1', '2022-08-19 09:29:38', 1),
+(30, 1, 'aan', 'setiawan', '1', '::1', '2022-08-19 09:30:59', 1),
+(31, 2, 'tes', 'kedua', '2', '::1', '2022-08-19 09:38:22', 1),
+(32, 1, 'aan', 'setiawan', '1', '::1', '2022-08-19 10:08:54', 1),
+(33, 1, 'user', 'admin', '1', '::1', '2022-08-19 10:37:33', 1),
+(34, 5, 'sista', 'prasista', '2', '::1', '2022-08-19 11:29:12', 1),
+(35, 1, 'user', 'admin', '1', '::1', '2022-08-19 11:36:13', 1),
+(36, 1, 'user', 'admin', '1', '::1', '2022-08-19 11:40:45', 1),
+(37, 5, 'sista', 'prasista', '2', '::1', '2022-08-19 11:43:38', 0),
+(38, 5, 'sista', 'prasista', '2', '::1', '2022-08-19 11:43:47', 1),
+(39, 1, 'user', 'admin', '1', '::1', '2022-08-19 11:50:33', 1),
+(40, 6, 'Sista', 'Prasista Y', '2', '::1', '2022-08-19 12:26:04', 1),
+(41, 1, 'user', 'admin', '1', '::1', '2022-08-20 08:53:31', 1);
 
 -- --------------------------------------------------------
 
@@ -80,29 +106,27 @@ CREATE TABLE `auth_tokens` (
 --
 
 CREATE TABLE `barang_pesanan` (
-  `id` int(11) NOT NULL,
+  `id_barang_pesanan` int(11) NOT NULL,
   `pesanan_id` int(11) NOT NULL,
   `barang_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `montir`
+-- Dumping data for table `barang_pesanan`
 --
 
-CREATE TABLE `montir` (
-  `id` int(11) NOT NULL,
-  `nama_montir` varchar(115) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `montir`
---
-
-INSERT INTO `montir` (`id`, `nama_montir`) VALUES
-(1, 'Suryono'),
-(2, 'Iqbal');
+INSERT INTO `barang_pesanan` (`id_barang_pesanan`, `pesanan_id`, `barang_id`) VALUES
+(1, 24, 2),
+(2, 25, 2),
+(3, 25, 3),
+(4, 25, 2),
+(6, 25, 2),
+(7, 25, 3),
+(8, 25, 4),
+(9, 26, 3),
+(10, 26, 4),
+(11, 27, 3),
+(12, 27, 2);
 
 -- --------------------------------------------------------
 
@@ -119,6 +143,7 @@ CREATE TABLE `pesanan` (
   `merk_kendaraan` varchar(115) NOT NULL,
   `jenis_pelayanan` smallint(6) NOT NULL,
   `status` tinyint(4) NOT NULL,
+  `keterangan` varchar(115) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -127,23 +152,12 @@ CREATE TABLE `pesanan` (
 -- Dumping data for table `pesanan`
 --
 
-INSERT INTO `pesanan` (`id`, `email`, `barang_pesanan_id`, `jenis_kendaraan`, `nama_pelanggan`, `merk_kendaraan`, `jenis_pelayanan`, `status`, `created_at`, `updated_at`) VALUES
-(4, '', 0, 1, 'awdawdw', 'ashkjdhaksjhdka', 2, 0, '2022-08-14 07:26:34', '2022-08-14 07:26:34'),
-(6, '', 0, 1, 'asdasdasd', 'hsjhdkajshd', 1, 0, '2022-08-14 15:04:02', '2022-08-14 15:04:02'),
-(7, '', 0, 1, 'asdasda', 'sdasda', 1, 0, '2022-08-14 15:05:51', '2022-08-14 15:05:51'),
-(8, '', 0, 1, 'asdasda', 'werwerwerw', 1, 0, '2022-08-14 15:06:16', '2022-08-14 15:06:16'),
-(9, '', 0, 2, 'dasdasdas', 'asdasdasdasd', 2, 0, '2022-08-14 15:57:20', '2022-08-14 15:57:20'),
-(10, '', 0, 2, 'jalksdlakjs', 'jdalskjdlakjsd', 1, 0, '2022-08-15 08:23:28', '2022-08-15 08:23:28'),
-(11, '', 0, 1, 'asdmalksmda', 'skdjalksjdla', 1, 0, '2022-08-15 08:24:48', '2022-08-15 08:24:48'),
-(12, '', 0, 1, 'dakjshdkaj', 'saldkjaskdjlas', 1, 0, '2022-08-15 08:27:38', '2022-08-15 08:27:38'),
-(13, '', 0, 1, 'sjkdalksjda', 'dkalsjdlakjsld', 2, 0, '2022-08-15 08:28:23', '2022-08-15 08:28:23'),
-(14, '', 0, 1, 'nalskdjals', 'jhsKJSHKAHS', 1, 0, '2022-08-15 08:28:38', '2022-08-15 08:28:38'),
-(15, '', 0, 1, 'sndlaknsdla', 'khjashdkjas', 1, 0, '2022-08-15 08:30:57', '2022-08-15 08:30:57'),
-(16, '', 0, 1, 'dakjshdkja', 'sjdlakjsd', 1, 0, '2022-08-15 08:41:14', '2022-08-15 08:41:14'),
-(17, '', 0, 1, 'hljhinqq', '312313', 2, 0, '2022-08-16 06:42:55', '2022-08-16 06:42:55'),
-(18, '', 0, 1, 'lanksndlasidoak', '2312312312', 2, 1, '2022-08-16 06:44:31', '2022-08-16 06:44:31'),
-(19, 'huhu21@gmail.com', 0, 1, 'bbbgsdjaiskak', 'poepqjwyequwe', 1, 2, '2022-08-16 06:58:02', '2022-08-16 09:09:13'),
-(20, 'huhu21@gmail.com', 0, 1, 'hasjdhakjshd', 'nknknknnm', 1, 2, '2022-08-16 07:29:18', '2022-08-16 08:59:31');
+INSERT INTO `pesanan` (`id`, `email`, `barang_pesanan_id`, `jenis_kendaraan`, `nama_pelanggan`, `merk_kendaraan`, `jenis_pelayanan`, `status`, `keterangan`, `created_at`, `updated_at`) VALUES
+(24, 'dimas@gmail.com', 1, 2, 'dimas', 'supra', 2, 2, 'Sugeng', '2022-08-19 16:15:31', '2022-08-19 10:52:15'),
+(25, 'huhu21@gmail.com', 0, 1, 'alex', 'honda supra 125cc', 1, 2, 'Servis motor', '2022-08-19 09:21:09', '2022-08-19 10:43:23'),
+(26, 'huhu21@gmail.com', 0, 1, 'Vicha', 'Honda Genio 125', 2, 2, 'lampu depan mati, motor tidak mau nyala', '2022-08-19 09:30:40', '2022-08-19 09:33:03'),
+(27, 'sista123@gmail.com', 0, 1, 'Sista', 'Honda Genio 125', 2, 2, 'Sugeng', '2022-08-19 11:29:46', '2022-08-19 11:41:43'),
+(28, 'sista@gmail.com', 0, 1, 'Sista', 'Honda Genio 125', 2, 1, '', '2022-08-19 12:26:34', '2022-08-19 12:26:34');
 
 -- --------------------------------------------------------
 
@@ -164,24 +178,10 @@ CREATE TABLE `stockbarang` (
 --
 
 INSERT INTO `stockbarang` (`id`, `kode_barang`, `nama_barang`, `harga`, `stok_barang`) VALUES
-(1, '46546546', 'gjhgjgh', 3000000, 3);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `transaksi`
---
-
-CREATE TABLE `transaksi` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `jenis_kendaraan` varchar(115) NOT NULL,
-  `merk_kendaraan` varchar(115) NOT NULL,
-  `jenis_pelayanan` varchar(115) NOT NULL,
-  `total` int(11) NOT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+(2, '01_olisheel', 'oli motor shell', 50000, 5),
+(3, '02_busimotor', 'busi motor honda', 20000, 5),
+(4, '03_lampudepan', 'lampu depan honda', 40000, 5),
+(5, '04_kacaspion', 'Kaca Spion Revo', 25000, 16);
 
 -- --------------------------------------------------------
 
@@ -211,8 +211,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `email`, `password`, `reset_token`, `reset_expire`, `activated`, `activate_token`, `activate_expire`, `role`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'aan', 'setiawan', 'coba.lagi2@yahoo.com', '$argon2id$v=19$m=65536,t=4,p=1$cnF0YTlUdUp2SU5VLnhrdg$M0xXEINZc/A3lXL+tQ4q2b+7rYfhANxp8M7Wc4l6w88', '', NULL, 1, NULL, NULL, 1, '2022-08-16 16:41:07', '2022-08-16 16:41:07', NULL),
-(2, 'tes', 'kedua', 'huhu21@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$aTVpZ3kvWksuMnBOTk0uNA$w/nEHCfvNeAhaDX7EGzDB1Vx0YY1nZkCcOOHBjW5q6c', '', NULL, 1, NULL, NULL, 2, '2022-08-16 18:15:47', '2022-08-16 18:15:47', NULL);
+(1, 'user', 'admin', 'admin@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$cnF0YTlUdUp2SU5VLnhrdg$M0xXEINZc/A3lXL+tQ4q2b+7rYfhANxp8M7Wc4l6w88', '', NULL, 1, NULL, NULL, 1, '2022-08-16 16:41:07', '2022-08-16 16:41:07', NULL),
+(2, 'user', 'pelanggan', 'pelanggan@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$aTVpZ3kvWksuMnBOTk0uNA$w/nEHCfvNeAhaDX7EGzDB1Vx0YY1nZkCcOOHBjW5q6c', '', NULL, 1, NULL, NULL, 2, '2022-08-16 18:15:47', '2022-08-16 18:15:47', NULL),
+(3, 'Pancen', 'Oye', 'pancenoye@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$OWE0ekw3ZGd0bmN6dDFLeA$JC61JFOczqzVz+U4lZGciB25Yy1eOKrKaL60px1dCdc', '', NULL, 1, NULL, NULL, 2, '2022-08-19 21:05:09', '2022-08-19 21:05:09', NULL),
+(4, 'coba', 'sista', 'cobasista@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$SmwxTk9SVE1OMTRYQ3N6cw$UlkisfKG6o+UOG1PGriKzmvLzy5gx/PcJ9xOM49BR04', '', NULL, 1, NULL, NULL, 1, '2022-08-19 22:07:06', '2022-08-19 22:07:06', NULL),
+(5, 'sista', 'prasista', 'sista123@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$MVRiRWxLdlpacFdacEdpSg$SiZZacW4KfEdZl0TJ3QvVg5jKWcZV0AloNyd1oGzGsk', '', NULL, 1, NULL, NULL, 2, '2022-08-19 23:28:47', '2022-08-19 23:28:47', NULL),
+(6, 'Sista', 'Prasista Y', 'sista@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$NFhISnlZRXZ4VjZRWVVENg$8X8Kb9r1NohASe2Asbzm+CwrC+c05kgprxtPNaU16+k', '', NULL, 1, NULL, NULL, 2, '2022-08-20 00:25:49', '2022-08-20 00:25:49', NULL);
 
 -- --------------------------------------------------------
 
@@ -245,13 +249,9 @@ ALTER TABLE `auth_tokens`
 -- Indexes for table `barang_pesanan`
 --
 ALTER TABLE `barang_pesanan`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `montir`
---
-ALTER TABLE `montir`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_barang_pesanan`),
+  ADD KEY `pesanan_id` (`pesanan_id`),
+  ADD KEY `barang_id` (`barang_id`);
 
 --
 -- Indexes for table `pesanan`
@@ -264,13 +264,6 @@ ALTER TABLE `pesanan`
 --
 ALTER TABLE `stockbarang`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `transaksi`
---
-ALTER TABLE `transaksi`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `users`
@@ -292,43 +285,37 @@ ALTER TABLE `user_roles`
 -- AUTO_INCREMENT for table `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `auth_tokens`
 --
 ALTER TABLE `auth_tokens`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `montir`
+-- AUTO_INCREMENT for table `barang_pesanan`
 --
-ALTER TABLE `montir`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `barang_pesanan`
+  MODIFY `id_barang_pesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `pesanan`
 --
 ALTER TABLE `pesanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `stockbarang`
 --
 ALTER TABLE `stockbarang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `transaksi`
---
-ALTER TABLE `transaksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user_roles`
@@ -341,10 +328,11 @@ ALTER TABLE `user_roles`
 --
 
 --
--- Constraints for table `transaksi`
+-- Constraints for table `barang_pesanan`
 --
-ALTER TABLE `transaksi`
-  ADD CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `barang_pesanan`
+  ADD CONSTRAINT `barang_pesanan_ibfk_1` FOREIGN KEY (`barang_id`) REFERENCES `stockbarang` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `barang_pesanan_ibfk_2` FOREIGN KEY (`pesanan_id`) REFERENCES `pesanan` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
