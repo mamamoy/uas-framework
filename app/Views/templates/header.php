@@ -12,24 +12,16 @@
             <li class="nav-item"><a class="nav-link" href="/">Dashboard</a></li>
         </ul>
         <ul class="header-nav ms-auto">
-            <!-- <li class="nav-item"><a class="nav-link" href="#">
-                    <svg class="icon icon-lg">
-                        <use xlink:href=" base_url(); ?>/assets/vendors/@coreui/icons/svg/free.svg#cil-bell"></use>
-                    </svg></a></li>
-            <li class="nav-item"><a class="nav-link" href="#">
-                    <svg class="icon icon-lg">
-                        <use xlink:href=" base_url(); ?>/assets/vendors/@coreui/icons/svg/free.svg#cil-list-rich"></use>
-                    </svg></a></li>
-            <li class="nav-item"><a class="nav-link" href="#">
-                    <svg class="icon icon-lg">
-                        <use xlink:href=" base_url(); ?>/assets/vendors/@coreui/icons/svg/free.svg#cil-envelope-open"></use>
-                    </svg></a></li> -->
         </ul>
         <ul class="header-nav ms-3">
             <li class="nav-item dropdown">
                 <a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                     <div class="avatar avatar-md">
-                        <img class="avatar-img" src="<?= base_url(); ?>/assets/img/avatars/8.jpg" alt="user@email.com">
+                        <?php if (session()->get('role') == 1) : ?>
+                            <img class="avatar-img" src="<?= base_url(); ?>/assets/img/avatars/admin_logo.png" alt="admin">
+                        <?php else : ?>
+                            <img class="avatar-img" src="<?= base_url(); ?>/assets/img/avatars/pelanggan_logo.png" alt="pelanggan">
+                        <?php endif; ?>
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end pt-0">
@@ -38,28 +30,11 @@
                             Settings
                         </div>
                     </div>
-                    <?php if (session()->get('role') == 1) : ?>
-
-                        <a class="dropdown-item" href="#">
-                            <svg class="icon me-2">
-                                <use xlink:href="<?= base_url(); ?>/assets/vendors/@coreui/icons/svg/free.svg#cil-user"></use>
-                            </svg> Profile
-                        </a>
-                        <a class="dropdown-item" href="#">
-                            <div class="dropdown-divider">
-                            </div>
-                            <a class="dropdown-item" href="/logout">
-                                <svg class="icon me-2">
-                                    <use xlink:href="<?= base_url(); ?>/assets/vendors/@coreui/icons/svg/free.svg#cil-account-logout"></use>
-                                </svg> Logout
-                            </a>
-                        <?php else : ?>
-                            <a class="dropdown-item" href="/logout">
-                                <svg class="icon me-2">
-                                    <use xlink:href="<?= base_url(); ?>/assets/vendors/@coreui/icons/svg/free.svg#cil-account-logout"></use>
-                                </svg> Logout
-                            </a>
-                        <?php endif; ?>
+                    <a class="dropdown-item" href="/logout">
+                        <svg class="icon me-2">
+                            <use xlink:href="<?= base_url(); ?>/assets/vendors/@coreui/icons/svg/free.svg#cil-account-logout"></use>
+                        </svg> Logout
+                    </a>
                 </div>
             </li>
         </ul>
